@@ -7,19 +7,24 @@ package se.lexicon;
 public class App 
 {
 
-    //Anonymous Class
-    static DoStringStuff getBiggestString = new DoStringStuff(){
-
-        @Override
-        public String operate(String str1, String str2) {
-
+    //Lambda Expression
+    static DoStringStuff getBiggestString = (str1, str2) -> {
             if (str1.length() >= str2.length()){
                 return str1;
             }else{
                 return str2;
             }
+    };
+
+    static DoStringStuff getSmallestString = new DoStringStuff() {
+        @Override
+        public String operate(String str1, String str2) {
+            return str1.length() >= str2.length() ? str2 : str1;
         }
     };
+
+
+    static DoStringStuff concat = (s1, s2) -> s1.concat(s2);
 
     public static String doStringStuff(String string1, String string2, DoStringStuff operator){
         return operator.operate(string1,string2);
@@ -56,15 +61,16 @@ public class App
         String doStringStuff = doStringStuff(firstName, lastName, concatenate);
 
         //Anonymous Class on the fly.
-        System.out.println(doStringStuff(firstName, lastName, new DoStringStuff() {
-            @Override
-            public String operate(String str1, String str2) {
+        System.out.println(doStringStuff(
+                firstName,
+                lastName,
+                (String str1, String str2) -> {
                 StringBuilder stringBuilder = new StringBuilder();
                 stringBuilder.append(str1 + " " + str2);
                 stringBuilder.reverse();
                 return stringBuilder.toString();
-            }
-        }));
+                }
+        ));
 
     }
 
