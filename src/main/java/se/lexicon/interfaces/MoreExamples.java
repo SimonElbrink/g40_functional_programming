@@ -1,4 +1,4 @@
-package se.lexicon;
+package se.lexicon.interfaces;
 
 import se.lexicon.interfaces.Calculator;
 import se.lexicon.interfaces.Conditional;
@@ -46,8 +46,8 @@ public class MoreExamples {
 
         printer.print("Hello World");
 
-        Boolean isPositive = positive.test(100);
-        printer.print(isPositive.toString());
+        boolean isPositive = positive.test(100);
+        printer.print(Boolean.toString(isPositive));
 
         System.out.println(rng.generate());
 

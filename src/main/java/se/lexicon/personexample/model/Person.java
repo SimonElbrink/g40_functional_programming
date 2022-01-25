@@ -1,4 +1,4 @@
-package se.lexicon.model;
+package se.lexicon.personexample.model;
 
 import java.time.LocalDate;
 import java.util.Objects;

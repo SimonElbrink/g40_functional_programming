@@ -1,6 +1,6 @@
-package se.lexicon;
+package se.lexicon.personexample;
 
-import se.lexicon.model.Person;
+import se.lexicon.personexample.model.Person;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -29,7 +29,7 @@ public class PersonExamples {
         find(people,findByFirstName);
 
 
-        find(
+        findAndDo(
                 people,
                 p -> p.getBirthDate().equals(LocalDate.MAX),
                 p -> System.out.println(p)
@@ -47,7 +47,7 @@ public class PersonExamples {
         }
     }
 
-    public static <T> void find(Collection<T> source, Filter<T> predicate, Action<T> consumer){
+    public static <T> void findAndDo(Collection<T> source, Filter<T> predicate, Action<T> consumer){
         for (T obj : source) {
             if (predicate.test(obj)) {
                 consumer.consume(obj);
